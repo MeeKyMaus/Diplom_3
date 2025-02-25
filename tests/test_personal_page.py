@@ -2,7 +2,8 @@ import allure
 
 from pages.main_page import MainPage
 from pages.personal_account_page import PersonalAccountPage
-from base.locators import MainPageLocators as MPL, Urls
+from base.locators import MainPageLocators as MPL
+from api.urls import Urls
 
 
 @allure.suite('Test personal account')

@@ -1,16 +1,6 @@
 from selenium.webdriver.common.by import By
 
 
-class Urls:
-    BASE_URL = 'https://stellarburgers.nomoreparties.site'
-    LOGIN_PAGE = f'{BASE_URL}/login'
-    RECOVERY_PAGE = f'{BASE_URL}/forgot-password'
-    RESET_PASSWORD_PAGE = f'{BASE_URL}/reset-password'
-    PERSONAL_ACCOUNT = f'{BASE_URL}/account/profile'
-    ORDER_HISTORY = f'{BASE_URL}/account/order-history'
-    FEED_PAGE = f'{BASE_URL}/feed'
-
-
 class MainPageLocators:
     PERSONAL_ACCOUNT_BUTTON = (
         By.XPATH, ".//nav//p[contains(text(), 'Личный Кабинет')]")  # вход через кнопку «Личный кабинет»
@@ -34,7 +24,7 @@ class MainPageLocators:
 
 
 class PasswordRecoveryLocators:
-    RECOVERY_EMAIL = 'yana_kormshchikova_11666@yandex.ru'
+
     RECOVERY_PAGE_LINK = (By.XPATH, ".//a[text()='Восстановить пароль']")  # ссылка на форму восстановления пароля
     RECOVERY_EMAIL_FIELD = (By.XPATH, ".//form//input[@name='name']")  # Поле email в форме восстановления пароля
     RECOVERY_BUTTON = (By.XPATH, ".//button[text()='Восстановить']")  # Кнопка восстановить в форме

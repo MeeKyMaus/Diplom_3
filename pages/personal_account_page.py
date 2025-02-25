@@ -1,7 +1,8 @@
 import allure
 
 from pages.base_page import BasePage
-from base.locators import PersonalAccountLocators as PAL, Urls
+from base.locators import PersonalAccountLocators as PAL
+from api.urls import Urls
 
 
 class PersonalAccountPage(BasePage):

@@ -1,7 +1,9 @@
 import allure
 
 from pages.base_page import BasePage
-from base.locators import Urls, MainPageLocators as MPL
+from base.locators import MainPageLocators as MPL
+from api.urls import Urls
+
 
 
 class MainPage(BasePage):

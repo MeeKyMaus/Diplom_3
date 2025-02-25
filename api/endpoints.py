@@ -1,4 +1,4 @@
-from base.locators import Urls
+from api.urls import Urls
 
 
 class Endpoints:

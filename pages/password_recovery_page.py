@@ -1,8 +1,8 @@
 import allure
 
 from pages.base_page import BasePage
-from base.locators import Urls, PasswordRecoveryLocators as PRL
-
+from base.locators import PasswordRecoveryLocators as PRL
+from api.urls import Urls
 
 class PasswordRecoveryPage(BasePage):
 

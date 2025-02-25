@@ -3,7 +3,8 @@ import pytest
 
 from pages.password_recovery_page import PasswordRecoveryPage
 from pages.main_page import MainPage
-from base.locators import MainPageLocators as MPL, Urls
+from base.locators import MainPageLocators as MPL
+from api.urls import Urls
 
 
 @allure.suite('Test recovery form')

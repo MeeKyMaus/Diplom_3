@@ -1,27 +1,25 @@
-import allure
-import pytest
-import requests
-from selenium import webdriver
-
-from api.register_new_user import RegisterUserByApi
 from api.endpoints import Endpoints
+from api.register_new_user import RegisterUserByApi
 from api.user_orders import CreateOrderByAPI
-from base.locators import MainPageLocators as MPL, Urls
+from base.locators import MainPageLocators as MPL
 from pages.main_page import MainPage
 from pages.personal_account_page import PersonalAccountPage
+from api.urls import Urls
+import pytest
+import requests
+import allure
+from selenium import webdriver
 
 
-# @pytest.fixture(params=['chrome', 'firefox'])
-@pytest.fixture(params=['chrome'], scope='function')
+@pytest.fixture(params=['chrome', 'firefox'], scope='function')
 def driver(request):
     if request.param == 'chrome':
         chrome_options = webdriver.ChromeOptions()
         chrome_options.add_argument('--window-size=1920,1080')
         driver = webdriver.Chrome(options=chrome_options)
-
-    # if request.param == 'firefox':
-    #     driver = webdriver.Firefox()
-    #     driver.set_window_size(1920, 1080)
+    elif request.param == 'firefox':
+        driver = webdriver.Firefox()
+        driver.set_window_size(1920, 1080)
 
     driver.get(Urls.BASE_URL)
     yield driver
@@ -32,9 +30,7 @@ def driver(request):
 @pytest.fixture(scope='function')
 def create_new_user_by_api():
     data = RegisterUserByApi.register_new_user_and_return_login_password()
-
     yield data
-
     access_token = data[1].json()["accessToken"]
     requests.delete(f"{Endpoints.DELETE_USER}", headers={'Authorization': f'{access_token}'})
 
@@ -57,7 +53,5 @@ def get_order_number(create_new_user_by_api):
     access_token = data[1].json()["accessToken"]
     CreateOrderByAPI.create_new_order(access_token)
     orders = CreateOrderByAPI.get_user_orders(access_token)
-    orders_numbers = []
-    for order in orders:
-        orders_numbers.append(order["number"])
+    orders_numbers = [order["number"] for order in orders]
     return orders_numbers
