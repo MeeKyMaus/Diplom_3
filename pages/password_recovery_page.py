@@ -1,6 +1,7 @@
 import allure
 
 from pages.base_page import BasePage
+from test_data.data import TestData
 from base.locators import PasswordRecoveryLocators as PRL
 from api.urls import Urls
 
@@ -21,7 +22,7 @@ class PasswordRecoveryPage(BasePage):
     @allure.step('Fill email field')
     def fill_email_field(self):
         self.click(PRL.RECOVERY_EMAIL_FIELD)
-        self.fill_field(PRL.RECOVERY_EMAIL_FIELD, PRL.RECOVERY_EMAIL)
+        self.fill_field(PRL.RECOVERY_EMAIL_FIELD, TestData.RECOVERY_EMAIL)
 
     @allure.step('Clicking on recovery button')
     def click_recovery_btn(self):
